@@ -1,0 +1,55 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header, footer {
+    height: 8.5rem;
+    padding-block: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 35%;
+}
+
+header {
+    background: url("https://ifoi.com/images/dominica.jpg");
+}
+
+footer {
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrq3_aTkgatXSU3-HgJOWn-Sgmc0U9SMJZqA&s");
+}
+
+header > *, footer > * {
+    padding: .625rem;
+    border-radius: 4px;
+
+    background-color: rgb(255 255 255 / 90%);
+    backdrop-filter: blur(10px);
+}
+
+main {
+    width: 80%;
+    margin-inline: auto;
+
+    padding: 0.625rem 1.325rem;
+}
+
+section {
+    padding-block: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}

@@ -1,19 +1,48 @@
-from flask import Flask
+from flask import Flask, render_template
 from validate_docbr import CPF, CNPJ
 
 app = Flask(__name__)
 
 @app.route("/")
 def pagina_principal():
-    return "<h1>oieeee</h1><p>manooo</p>"
+    # dependendo da aplicação, os arquivos html serão localizados dentro da pasta 'templates' na raíz do projeto, ou na pasta interior
+    return render_template("home.html")
 
 @app.route("/contato")
 def pagina_contato():
-    return "essa é a pagina de contatooooo"
+    return render_template("contato.html")
 
 @app.route("/produtos")
 def pagina_produtos():
-    return "<h1>produtos</h1>"
+    lista_produtos = [
+        {
+            "nome": "coca-cola",
+            "descricao": "coca cola espumante"
+        },
+        {
+            "nome": "davi gomes",
+            "descricao": "ta aí mano"
+        },
+        {
+            "nome": "doritos",
+            "descricao": "saguado",
+        },
+        {
+            "nome": "Torre jenga",
+            "descricao": "KK Q NEM O LATORRE"
+        },
+        {
+            "nome": "sei la vey",
+            "descricao": "ta aí mano"
+        },
+        {
+            "nome": "doritos",
+            "descricao": "de novo sim",
+        }
+    ]
+
+    # para passar uma variavel, é necessário criar um nome de variável e passar o objeto
+    return render_template("produtos.html", produtos=lista_produtos)
 
 # Exercicios 
 # /servicos retornar "Nossos servicos"

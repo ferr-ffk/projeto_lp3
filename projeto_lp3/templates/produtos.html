@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}Produtos{% endblock %}
+<head>
+    <style>
+        .produtos {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .produto {
+            display: flex;
+            padding: 1.625rem 0.625rem;
+            
+            border: 1px solid gray;
+            border-radius: 4px;
+            
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .produto :first-child {
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+    </style>
+</head>
+{% block children %}
+<main>
+    <section>
+        <h1>Produtos</h1>
+        <p>Aqui são os produtos</p>
+    </section>
+    <section>
+        <div class="produtos">
+            {% for produto in produtos %}
+                <div class="produto">
+                    <div>{{ produto.nome }}</div>
+                    <div>{{ produto.descricao }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
