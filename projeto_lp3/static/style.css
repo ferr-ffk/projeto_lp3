@@ -116,3 +116,7 @@ section {
     border: 1px solid gray;
     border-radius: .5rem;
 }
+
+.home_img {
+    mask-image: linear-gradient(black 70%, transparent 90%);
+}
