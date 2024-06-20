@@ -8,24 +8,31 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
-    
+    {% block header %}
     <header>
-        <p>pagina principal ie ie</p>
         <nav>
             <ul>
-                <li><a href="/">Página principal</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/contato">Contato</a></li>
                 <li><a href="/produtos">Produtos</a></li>
             </ul>
         </nav>
     </header>
+    {% endblock %}
 
     {% block children %}
     {% endblock %}
 
+    {% block footer %}
     <footer>
-        <p>ferdev &copy;</p>
+        <p>Desenvolvido por fernando freitas, 2024 &copy;</p>
+        <ul>
+            <li><a href="/termos-de-uso">termos de uso</a></li>
+            <li><a href="/politica-privacidade">politica privacidade</a></li>
+            <li><a href="/como-utilizar">como utilizar</a></li>
+        </ul>
     </footer>
+    {% endblock %}
 
     </body>
 </html>

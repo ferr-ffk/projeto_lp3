@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block children %}
+
+{% block title %}{{ id_name }} gerado{% endblock %}
+
+<main>
+    <section>
+        <h1>{{ id_name }} gerado:</h1>
+        <input type="text" name="{{ id_name }}" id="{{ id_name }}" value="{{ id_generated }}">
+    </section>
+</main>
+
+{% endblock %}
