@@ -1,7 +1,34 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from validate_docbr import CPF, CNPJ
 
 app = Flask(__name__)
+
+lista_produtos = [
+    {
+        "nome": "CD Motomami",
+        "descricao": "da rosalia diva",
+        "img": {
+            "url": "https://http2.mlstatic.com/D_Q_NP_760567-MLA49762876220_042022-O.webp",
+            "alt": "CD Motomami",
+        },
+    },
+    {
+        "nome": "CD KICK ii",
+        "descricao": "da arca bafonica",
+        "img": {
+            "url": "https://assets.boomkat.com/spree/products/811966/large/kick2-cd-b.jpg",
+            "alt": "CD da Arca",
+        },
+    },
+    {
+        "nome": "CD Do Richard D. James",
+        "descricao": "com essa capa assutadora mds",
+        "img": {
+            "url": "https://d1rgjmn2wmqeif.cloudfront.net/f/2000/327437.png",
+            "alt": "asdawd",
+        },
+    },
+]
 
 @app.route("/")
 def pagina_principal():
@@ -14,34 +41,26 @@ def pagina_contato():
 
 @app.route("/produtos")
 def pagina_produtos():
-    lista_produtos = [
-        {
-            "nome": "CD Motomami",
-            "descricao": "da rosalia diva",
-            "img": {
-                "url": "https://http2.mlstatic.com/D_Q_NP_760567-MLA49762876220_042022-O.webp",
-                "alt": "CD Motomami",
-            },
-        },
-        {
-            "nome": "CD KICK ii",
-            "descricao": "da arca bafonica",
-            "img": {
-                "url": "https://assets.boomkat.com/spree/products/811966/large/kick2-cd-b.jpg",
-                "alt": "CD da Arca",
-            },
-        },
-        {
-            "nome": "CD Do Richard D. James",
-            "descricao": "com essa capa assutadora mds",
-            "img": {
-                "url": "https://d1rgjmn2wmqeif.cloudfront.net/f/2000/327437.png",
-                "alt": "asdawd",
-            },
-        },
-    ]
-
     # para passar uma variavel, é necessário criar um nome de variável e passar o objeto
+    return render_template("produtos.html", produtos=lista_produtos)
+
+# Para definir a rota de post, define no decorator o metodo
+# Para obter a requisição do form usa o request.form
+@app.route("/produtos", methods=['post'])
+def pagina_produtos_post():
+    nome = request.form['nome']
+    descricao = request.form['descricao']
+    url = request.form['url']
+
+    lista_produtos.append({
+        "nome": nome,
+        "descricao": descricao,
+        "img": {
+            "url": url,
+            "alt": ""
+        }
+    })
+
     return render_template("produtos.html", produtos=lista_produtos)
 
 @app.route("/termos-de-uso")
@@ -85,6 +104,11 @@ def pagina_gerar_cpf():
 @app.route("/gerar-cnpj")
 def pagina_gerar_cnpj():
     return render_template("identificador-gerado.html", id_name="cnpj", id_generated=CNPJ().generate(True))
+
+
+@app.route("/produtos/cadastro")
+def pagina_cadastro_produto():
+    return render_template("cadastro_produto.html")
 
 if __name__ == "__main__":
     app.debug = True

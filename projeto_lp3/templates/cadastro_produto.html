@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Página de cadastro de produto{% endblock %}
+
+{% block children %}
+
+<section>
+    <h1>Cadastrar um novo produto</h1>
+</section>
+<section>
+    <!-- action=> é o destino do método -->
+    <!-- method=> post ou get, dependendo da finalidade -->
+    <!-- Lembrando que para obter o valor no servidor, deve se definir o valor do 'name' -->
+    <form action="/produtos" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" placeholder="Insira o nome do produto">
+
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Descrição do produto"></textarea>
+
+        <label for="url">Digite a url da imagem:</label>
+        <input type="text" placeholder="link..." name="url" id="url">
+
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+{% endblock %}
